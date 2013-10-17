@@ -19,7 +19,8 @@ document.getElementById('alarm-new-details-back').addEventListener('click', func
 
 document.getElementById('alarm-new-details-done').addEventListener('click', function (ev) {
   ev.preventDefault();
-  utils.navigation.back();
+  AlarmsHelper.addAlarm(document.getElementById('time').value,
+                        utils.navigation.back);
 });
 
 var stopWatchStart = document.getElementById('stopwatch-start');
