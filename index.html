@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
+    <title>Building blocks demo</title>
+    <!-- Building blocks -->
+    <link rel="stylesheet" href="css/style/action_menu.css">
+    <link rel="stylesheet" href="css/style/buttons.css">
+    <link rel="stylesheet" href="css/style/confirm.css">
+    <link rel="stylesheet" href="css/style/edit_mode.css">
+    <link rel="stylesheet" href="css/style/headers.css">
+    <link rel="stylesheet" href="css/style/input_areas.css">
+    <link rel="stylesheet" href="css/style/status.css">
+    <link rel="stylesheet" href="css/style/switches.css">
+    <link rel="stylesheet" href="css/style_unstable/drawer.css">
+    <link rel="stylesheet" href="css/style_unstable/lists.css">
+    <link rel="stylesheet" href="css/style_unstable/progress_activity.css">
+    <link rel="stylesheet" href="css/style_unstable/scrolling.css">
+    <link rel="stylesheet" href="css/style_unstable/seekbars.css">
+    <link rel="stylesheet" href="css/style_unstable/tabs.css">
+    <link rel="stylesheet" href="css/style_unstable/toolbars.css">
+    <!-- Icons -->
+    <link rel="stylesheet" href="css/icons/styles/action_icons.css">
+    <link rel="stylesheet" href="css/icons/styles/media_icons.css">
+    <link rel="stylesheet" href="css/icons/styles/comms_icons.css">
+    <link rel="stylesheet" href="css/icons/styles/settings_icons.css">
+    <!-- Transitions -->
+    <link rel="stylesheet" href="css/transitions.css">
+    <!-- Util CSS: some extra tricks -->
+    <link rel="stylesheet" href="css/util.css">
+    <link rel="stylesheet" href="css/fonts.css">
+    <!-- Additional markup to make Building Blocks kind of cross browser -->
+    <link rel="stylesheet" href="css/cross_browser.css">
+    <link rel="stylesheet" href="css/app.css">
+  </head>
+
+  <body>
+    <section id="tabs" data-position="current">
+      <section role="region">
+        <article class="content scrollable">
+          <ul role="tablist" data-items="3" class="bottom">
+            <li id="panel1" role="tab" aria-selected="true">
+              <a href="#panel1">Alarm</a>
+              <div role="tabpanel">
+                <div id="clock-container">
+                  <div id="alarm-new"></div>
+                  <canvas id="ca"></canvas>
+                </div>
+              </div>
+            </li>
+            <li id="panel2" role="tab">
+              <a href="#panel2">Timer</a>
+              <div role="tabpanel">
+                <p> To do </p>
+              </div>
+            </li>
+            <li id="panel3" role="tab">
+              <a href="#panel3">Stopwatch</a>
+              <div role="tabpanel">
+                <p id="stopwatch-time"><span id="stopwatch-min">00</span>:<span id="stopwatch-sec">00</span></p>
+                <menu>
+                  <button id="stopwatch-start">Start</button>
+                  <button id="stopwatch-reset" class="danger" disabled>Reset</button>
+                </menu>
+              </div>
+            </li>
+          </ul>
+        </article>
+      </section>
+    </section>
+    <section id="alarm-new-details" role="region" data-position="right" data-transition="push">
+      <header class="fixed">
+        <button id="alarm-new-details-back">
+          <span class="icon icon-close">close</span>
+        </button>
+        <menu type="toolbar">
+          <button id="alarm-new-details-done">done</button>
+        </menu>
+        <h1>New alarm</h1>
+      </header>
+      <article class="content scrollable header">
+        <header>
+          <h2>Alarm name</h2>
+        </header>
+        <form>
+          <p>
+            <input type="text" placeholder="Type a name...">
+            <button type="reset">Clear</button>
+          </p>
+        </form>
+        <header>
+          <h2>Time</h2>
+        </header>
+        <form>
+          <ul>
+            <li class="time-selector">
+              <button class="icon icon-dialog"></button>
+              <input type="time"/>
+            </li>
+          </ul>
+        </form>
+        <header>
+          <h2>Repeat</h2>
+        </header>
+        <form>
+          <ul>
+            <li class="value-selector">
+              <button class="icon icon-dialog"></button>
+              <select multiple>
+                <option>Monday</option>
+                <option>Tuesday</option>
+                <option>Wednesday</option>
+                <option>Thursday</option>
+                <option>Friday</option>
+                <option>Saturday</option>
+                <option>Sunday</option>
+              </select>
+            </li>
+          </ul>
+        </form>
+        <header>
+          <h2>Sound</h2>
+        </header>
+        <form>
+          <ul>
+            <li class="value-selector">
+              <button class="icon icon-dialog"></button>
+              <select>
+                <option>Song 1</option>
+                <option>Song 2</option>
+                <option>Song 3</option>
+                <option>Song 4</option>
+                <option>Song 5</option>
+              </select>
+            </li>
+          </ul>
+        </form>
+        <header>
+          <h2>Vibration</h2>
+        </header>
+        <form>
+          <ul>
+            <li class="value-selector">
+              <button class="icon icon-dialog"></button>
+              <select>
+                <option>Activated</option>
+                <option>Deactivated</option>
+              </select>
+            </li>
+          </ul>
+        </form>
+        <header>
+          <h2>Postpone</h2>
+        </header>
+        <form>
+          <ul>
+            <li class="value-selector">
+              <button class="icon icon-dialog"></button>
+              <select>
+                <option>5 minutes</option>
+                <option>10 minutes</option>
+                <option>15 minutes</option>
+                <option>20 minutes</option>
+              </select>
+            </li>
+          </ul>
+        </form>
+      </article>
+    </section>
+    <script type="text/javascript" src="js/status.js"></script>
+    <script type="text/javascript" src="js/seekbars.js"></script>
+    <script type="text/javascript" src="js/navigation.js"></script>
+    <script type="text/javascript" src="js/clock.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+  </body>
+
+</html>

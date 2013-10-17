@@ -1,0 +1,17 @@
+{
+  "name": "Alarmz",
+  "description": "Cross-platform clock alarms test app.",
+  "launch_path": "/index.html",
+  "developer": {
+    "name": "Telefónica Digital",
+    "url": "https://github.com/telefonicaid"
+  },
+  "locales": {
+    "en-US": {
+      "name": "Alarmz",
+      "description": "Cross-platform clock alarms test app."
+    }
+  },
+  "default_locale": "en-US",
+  "orientation": "portrait-primary"
+}

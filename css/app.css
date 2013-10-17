@@ -1,0 +1,314 @@
+/*
+Taken from the Building Blocks demo app. Please visit
+  https://marketplace.firefox.com/app/building-blocks and its source code at
+  https://github.com/buildingfirefoxos/Building-Blocks/blob/gh-pages/app.html#L40 .
+*/
+
+[data-position="current"] {
+  height: 100%;
+}
+
+[data-position="right"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transform: translateX(100%);
+  -webkit-transform: translateX(100%);
+/*
+  z-index: 15;
+  z-index: 100;
+*/
+  /* -> drawer */
+}
+
+section[role="region"][data-position="right"] {
+  position: absolute;
+}
+
+[data-position="back"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  opacity: 0;
+  /* z-index: 100; -> drawer */
+}
+
+[data-position="edit-mode"] {
+  position: absolute;
+  top: -5rem;
+  left: 0;
+  right: 0;
+  bottom: -7rem;
+  z-index: -1;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+[data-position="edit-mode"].edit {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+/*  z-index: 120;*/
+  opacity: 1;
+}
+
+/* Page navigation */
+
+.moveLeftIn {
+  animation: moveLeftIn 0.4s forwards;
+  -webkit-animation: moveLeftIn 0.4s forwards;
+}
+
+.moveLeftOut {
+  animation: moveLeftOut 0.4s forwards;
+  -webkit-animation: moveLeftOut 0.4s forwards;
+}
+
+.moveRightIn {
+  animation: moveRightIn 0.4s forwards;
+  -webkit-animation: moveRightIn 0.4s forwards;
+}
+
+.moveRightOut {
+  animation: moveRightOut 0.4s forwards;
+  -webkit-animation: moveRightOut 0.4s forwards;
+}
+
+.fadeIn {
+/*  z-index: 120;*/
+  animation: fadeIn 0.2s forwards;
+  -webkit-animation: fadeIn 0.2s forwards;
+}
+
+.fadeOut {
+  animation: fadeOut 0.2s forwards;
+  -webkit-animation: fadeOut 0.2s forwards;
+}
+
+/* Headers */
+ #headers section[role="region"] {
+  margin-bottom: 1.5rem;
+}
+
+#headers section[role="region"]:not(#drawer) {
+  display: inline;
+}
+
+#headers article header:first-child {
+  margin-top: 1.5rem;
+}
+
+#headers section[role="region"] header h2 {
+  margin: 0 0 1.5rem 0;
+}
+
+/* Fix margins (overwrite util.css) */
+section[role="region"] > .content {
+  padding: 0 1.5rem 1.5rem 1.5rem;
+}
+
+section[role="region"] > .content header h2 {
+  margin: 3rem -1.5rem 1.5rem -1.5rem;
+}
+
+/* Lists */
+
+/* to avoid double background effect on press */
+[data-type=list] li>a:active {
+  background-color: transparent;
+}
+
+/* Drawer */
+ section[role="region"]:not(#drawer) {
+  transition: none;
+  left: 0;
+/*  z-index: 0;*/
+  padding-left: 0;
+}
+
+/*section[role="region"]:not(#drawer) > header:first-child {
+      margin-left: 0;
+    }
+    section[role="region"]:not(#drawer) > header:first-child h1 {
+      margin-left: 3rem;
+    }
+    section[role="region"]#drawer > header:first-child h1 {
+      margin-left: 4.5rem;
+    }
+    section[role="region"]:not(#drawer) > header:first-child > a {
+      width: 5rem;
+    }
+    section[role="region"]#drawer > header:first-child > a .icon {
+      width: 3.5rem;
+
+}*/
+
+section[data-type="sidebar"] + section[role="region"] > header:first-child > button, section[data-type="sidebar"] + section[role="region"] > header:first-child > a {
+  background-position: 3.5rem center;
+}
+
+/* section[role="region"]:not(#drawer) > header:first-child > a .icon:after {
+      width: 2rem;
+    }
+    section[role="region"]#drawer > header:first-child > a .icon:after {
+      width: 3.5rem;
+    }*/
+
+/* Switches */
+ #switches label:last-child {
+  margin-left: 2rem;
+}
+
+/* Scrolling */
+ nav[data-type="scrollbar"] {
+  padding-top: 1rem;
+}
+
+nav[data-type="scrollbar"] p {
+  opacity: 1;
+}
+
+/* Seek bars */
+ div[role="slider"] > label.icon {
+  background: no-repeat right top;
+  background-size: 3rem auto;
+}
+
+/*
+ Status
+section[role="status"] {
+  z-index: 1000;
+}
+*/
+
+/* Tabs */
+ #tabs .content {
+  padding: 0;
+}
+
+#tabs .content .content {
+  padding: 1.5rem 3rem;
+}
+
+/* Filters */
+[role="tablist"][data-type="filter"] {
+  margin-bottom: 2rem;
+}
+
+.bottom[role="tablist"][data-type="filter"] {
+  bottom: auto;
+}
+
+/* Device rotation */
+ .landscape section[role="region"]#drawer > header:first-child {
+  background: green;
+}
+
+/* Clock */
+#clock-container {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  -webkit-box-align: center;
+  -webkit-box-pack: center;
+  display: -moz-box;
+  -moz-box-align: center;
+  -moz-box-pack: center;
+  display: -ms-flexbox;
+  -ms-flex-align: center;
+  -ms-flex-pack: center;
+  display: box;
+  box-align: center;
+  box-pack: center;
+}
+
+#alarm-new {
+  position: absolute;
+  background: url(images/add_alarm.png) no-repeat center / 3.2rem;
+  background-size: 100% auto;
+  height: 2.5rem;
+  width: 3.2rem;
+  border: none;
+  top: 0;
+  right: 0;
+  margin-top: 2.1rem;
+  margin-right: 1.5rem;
+}
+
+.time-selector {
+  position: relative;
+}
+
+.time-selector button {
+  pointer-events: none;
+}
+
+.time-selector input {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 3.8rem;
+  line-height: 4rem;
+  border: none;
+  background: transparent;
+  font-size: 1.6rem;
+  padding: 0 1.5rem;
+}
+
+.value-selector {
+  position: relative;
+}
+
+.value-selector button {
+  pointer-events: none;
+}
+
+.value-selector select {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 3.8rem;
+  line-height: 4rem;
+  border: none;
+  background: transparent;
+  font-size: 1.6rem;
+  padding: 0 1.5rem;
+}
+
+.value-selector select option {
+  height: 3.8rem;
+  padding-top: 1rem;
+}
+
+[role="tabpanel"] p {
+  font-size: 10rem;
+  width: 100%;
+  display: -webkit-box;
+  -webkit-box-pack: center;
+  display: -moz-box;
+  -moz-box-pack: center;
+  display: -ms-flexbox;
+  -ms-flex-pack: center;
+  display: box;
+  box-pack: center;
+}
+
+#panel3 menu {
+  margin-right: 5rem;
+}
+
+#panel3 button {
+  width: 100%;
+  text-align: center;
+}
