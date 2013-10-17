@@ -10,6 +10,9 @@
     "60": "images/tizen-icon-60.png",
     "128": "images/tizen-icon-128.png"
   },
+  "permissions": {
+    "alarms":{}
+  },
   "locales": {
     "en-US": {
       "name": "Alarmz",
@@ -17,5 +20,8 @@
     }
   },
   "default_locale": "en-US",
-  "orientation": "portrait-primary"
+  "orientation": "portrait-primary",
+  "messages": [
+    { "alarm": "/index.html" }
+  ]
 }
