@@ -6,6 +6,10 @@
     "name": "Telefónica Digital",
     "url": "https://github.com/telefonicaid"
   },
+  "icons": {
+    "60": "images/tizen-icon-60.png",
+    "128": "images/tizen-icon-128.png"
+  },
   "locales": {
     "en-US": {
       "name": "Alarmz",
