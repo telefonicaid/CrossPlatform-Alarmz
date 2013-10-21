@@ -117,7 +117,7 @@ var WebAlarmAPI = (function() {
 
 						var alarmAbsolutes = tizen.alarm.getAll();
 						var total = alarmAbsolutes.length;
-						
+
 						if (total === 0) {
 							req.done(alarms);
 						} else {
@@ -170,8 +170,11 @@ var WebAlarmAPI = (function() {
 					try {
 						// Creating a new alarm absolute from the date
 						var alarm = new tizen.AlarmAbsolute(date);
+						var appControl = new tizen.ApplicationControl(
+											'http://tizen.org/appcontrol/operation/alarm');
 						tizen.alarm.add(alarm,
-											    tizen.application.getCurrentApplication().appInfo.id);
+														tizen.application.getCurrentApplication().appInfo.id,
+														appControl);
 
 						req.done(alarm.id);
 						return;
