@@ -8,8 +8,13 @@ Taken from the Building Blocks demo app. Please visit
   height: 100%;
 }
 
+section[role="region"] {
+  position: fixed;
+  overflow-x: hidden;
+}
+
 [data-position="right"] {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -24,7 +29,7 @@ Taken from the Building Blocks demo app. Please visit
 }
 
 section[role="region"][data-position="right"] {
-  position: absolute;
+  position: fixed;
 }
 
 [data-position="back"] {
