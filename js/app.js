@@ -19,9 +19,15 @@ document.getElementById('alarm-new-details-back').addEventListener('click', func
 
 document.getElementById('alarm-new-details-done').addEventListener('click', function (ev) {
   ev.preventDefault();
+
+  var time = document.getElementById('time').value;
+  if (!time || time.trim().length === 0) {
+    utils.navigation.back();
+    return;
+  }
+
   document.getElementById('show-alarms').removeAttribute('disabled');
-  AlarmsHelper.addAlarm(document.getElementById('time').value,
-                        utils.navigation.back);
+  AlarmsHelper.addAlarm(time, utils.navigation.back);
 });
 
 function resetAlarmList() {
