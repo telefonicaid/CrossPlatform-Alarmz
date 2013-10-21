@@ -2,16 +2,22 @@
 
 var AlarmsHelper = (function() {
 
+	function ring() {
+		navigator.vibrate(2000);
+		alert('RING!!!');
+	}
+
 	if (navigator.mozAlarms) {
 	  navigator.mozHasPendingMessage('alarm');
 	  navigator.mozSetMessageHandler('alarm', function (mozAlarm) {
 		  var req = navigator.mozApps.getSelf();
 			req.onsuccess = function() {
 				req.result.launch();
-				navigator.vibrate(2000);
-				alert('RING!!!');
+				setTimeout(ring);
 			};
 		});
+	} else {
+		// How can I know whether my app is launched from Alarm or not?
 	}
 
 	var parseTime = function(time) {
@@ -35,9 +41,9 @@ var AlarmsHelper = (function() {
 
   function addAlarm(time, callback) {
 		time = parseTime(time);
-		var myDate = (new Date()).setHours(time.hour, time.minute, 0, 0);
-
-		var request = navigator.alarms.add(myDate, 'ignoreTimezone');
+		var date = new Date();
+		date.setHours(time.hour, time.minute, 0, 0);
+		var request = navigator.alarms.add(date, 'ignoreTimezone');
 
 		request.onsuccess = function () {
 			console.log("The alarm has been scheduled");

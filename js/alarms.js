@@ -7,11 +7,11 @@ var AsyncStorage = (function() {
   var STORENAME = 'alarms';
   var db = null;
 
-  function withStore(type, f) {
-    if (db) {
-      f(db.transaction(STORENAME, type).objectStore(STORENAME));
+  function withStore(type, cb) {
+    if (db !== null) {
+      cb(db.transaction(STORENAME, type).objectStore(STORENAME));
     } else {
-      var openreq = indexedDB.open(DBNAME, DBVERSION);
+      var openreq = window.indexedDB.open(DBNAME);
       openreq.onerror = function withStoreOnError() {
         console.error("AsyncStorage: can't open database:", openreq.error.name);
       };
@@ -111,17 +111,29 @@ var WebAlarmAPI = (function() {
       getAll: function getAll() {
         var req = new Request();
 
-        try {
-					window.setTimeout(function() {
+				window.setTimeout(function() {
+					try {
 						var alarms = [];
 
 						var alarmAbsolutes = tizen.alarm.getAll();
 						var total = alarmAbsolutes.length;
-
+						
 						if (total === 0) {
 							req.done(alarms);
 						} else {
 							alarmAbsolutes.forEach(function(alarmAbsolute) {
+								var alarm = {
+									id: alarmAbsolute.id,
+									date: alarmAbsolute.date,
+								};
+
+								alarms.push(alarm);
+
+								if (--total === 0) {
+									req.done(alarms);
+								}
+
+								return;
 								AsyncStorage.getItem(alarmAbsolute.id, function(info) {
 									var alarm = {
 										id: alarmAbsolute.id,
@@ -143,10 +155,10 @@ var WebAlarmAPI = (function() {
 								});
 							});
 						}
-					});
-        } catch (error) {
-          req.failed(error);
-        }
+					} catch (error) {
+						req.failed(error);
+					}
+				});
 
         return req;
       },
@@ -154,12 +166,16 @@ var WebAlarmAPI = (function() {
       add: function add(date, respectTimezone, data) {
         var req = new Request();
 
-        try {
-					window.setTimeout(function() {
+				window.setTimeout(function() {
+					try {
 						// Creating a new alarm absolute from the date
 						var alarm = new tizen.AlarmAbsolute(date);
 						tizen.alarm.add(alarm,
-											tizen.application.getCurrentApplication().appInfo.id);
+											    tizen.application.getCurrentApplication().appInfo.id);
+
+						req.done(alarm.id);
+						return;
+
 						// We have to save respectTimezone and data on indexedDB
 						AsyncStorage.setItem(alarm.id, {
 							respectTimezone: respectTimezone,
@@ -167,10 +183,10 @@ var WebAlarmAPI = (function() {
 						}, function saved() {
 							req.done(alarm.id);
 						});
-					});
-        } catch (error) {
-          req.failed(error);
-        }
+					} catch (error) {
+						req.failed(error);
+					}
+				});
 
         return req;
       },
@@ -178,21 +194,21 @@ var WebAlarmAPI = (function() {
       remove: function (alarmId) {
         var req = new Request();
 
-        try {
-					window.setTimeout(function() {
+				window.setTimeout(function() {
+					try {
 						tizen.alarm.remove(alarmId);
-						AsyncStorage.removeItem(alarmId);
+						//AsyncStorage.removeItem(alarmId);
 						// Must set the result attribute of the AlarmRequest to true
 						req.done(true);
-					});
-        } catch (error) {
-          if (error.type === 'NotFoundError') {
-            // This alarm identifier cannot be found in the storage
-            req.done(false);
-          } else {
-            req.failed(error);
-          }
-        }
+					} catch (error) {
+						if (error.type === 'NotFoundError') {
+							// This alarm identifier cannot be found in the storage
+							req.done(false);
+						} else {
+							req.failed(error);
+						}
+					}
+				});
 
         return req;
       }
