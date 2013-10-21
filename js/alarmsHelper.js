@@ -3,6 +3,7 @@
 var AlarmsHelper = (function() {
 
 	function ring() {
+    updateAlarmList();
 		navigator.vibrate(2000);
 		alert('RING!!!');
 	}

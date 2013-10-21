@@ -213,20 +213,11 @@ section[role="status"] {
 
 /* Clock */
 #clock-container {
-  width: 100%;
-  height: 100%;
-  display: -webkit-box;
-  -webkit-box-align: center;
-  -webkit-box-pack: center;
-  display: -moz-box;
-  -moz-box-align: center;
-  -moz-box-pack: center;
-  display: -ms-flexbox;
-  -ms-flex-align: center;
-  -ms-flex-pack: center;
-  display: box;
-  box-align: center;
-  box-pack: center;
+  margin-top: 3rem;
+  margin-left: calc((100% - 25rem) / 2);
+  margin-left: -webkit-calc((100% - 25rem) / 2);
+  width: 25rem;
+  height: 25rem;
 }
 
 #alarm-new {
@@ -240,6 +231,23 @@ section[role="status"] {
   right: 0;
   margin-top: 2.1rem;
   margin-right: 1.5rem;
+}
+
+#actions-container {
+  width: 100%;
+  height: 12rem;
+}
+
+#show-alarms {
+  top: 4.1rem;
+  margin: 0 3rem 0 3rem;
+  width: calc(100% - 6rem);
+  width: -webkit-calc(100% - 6rem);
+  text-align: center;
+}
+
+.centered-text {
+  text-align: center;
 }
 
 .time-selector {
