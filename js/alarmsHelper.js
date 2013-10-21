@@ -18,6 +18,20 @@ var AlarmsHelper = (function() {
 		});
 	} else {
 		// How can I know whether my app is launched from Alarm or not?
+		var reqAppControl = tizen.application.getCurrentApplication().
+																											 getRequestedAppControl();
+		if (reqAppControl) {
+			var appCtrl = reqAppControl.appControl;
+			if (appCtrl.operation === 'http://tizen.org/appcontrol/operation/alarm') {
+				appCtrl.data.forEach(function iter(item) {
+					if (item.key === 'http://tizen.org/appcontrol/data/alarm_id') {
+						console.log('Alarm id: ' + item.value[0]);
+					}
+				});
+
+        setTimeout(ring);
+			}
+		}
 	}
 
 	var parseTime = function(time) {
