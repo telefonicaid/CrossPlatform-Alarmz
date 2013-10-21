@@ -43,6 +43,14 @@ section[role="region"][data-position="right"] {
   /* z-index: 100; -> drawer */
 }
 
+form[role="dialog"][data-type="confirm"] {
+  pointer-events: none;
+}
+
+form[role="dialog"][data-type="confirm"].fadeIn {
+  pointer-events: auto;
+}
+
 [data-position="edit-mode"] {
   position: absolute;
   top: -5rem;
@@ -324,4 +332,9 @@ section[role="status"] {
 #panel3 button {
   width: 100%;
   text-align: center;
+}
+
+#ring img {
+  width: 12.4rem;
+  height: 5.5rem;
 }

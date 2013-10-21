@@ -28,6 +28,7 @@ document.getElementById('alarm-new-details-done').addEventListener('click', func
 
   document.getElementById('show-alarms').removeAttribute('disabled');
   AlarmsHelper.addAlarm(time, utils.navigation.back);
+  utils.status.show(utils.alarms.getAlarmMessage(time));
 });
 
 function resetAlarmList() {
@@ -88,6 +89,8 @@ function updateAlarmList() {
   };
 }
 
+updateAlarmList();
+
 document.getElementById('show-alarms').addEventListener('click', function (ev) {
   updateAlarmList();
   utils.navigation.go('#alarm-list');
@@ -99,6 +102,22 @@ document.getElementById('alarm-list-back').addEventListener('click', function (e
 
 document.getElementById('alarm-list-done').addEventListener('click', function (ev) {
   utils.navigation.back();
+});
+
+document.getElementById('ring-close').addEventListener('click', function (ev) {
+  ev.preventDefault();
+  utils.navigation.back();
+});
+
+document.getElementById('ring-snooze').addEventListener('click', function (ev) {
+  ev.preventDefault();
+  var now = new Date(Date.now());
+  var newTime = new Date(now.getTime() + 5*60000);
+  var minutes = newTime.getMinutes();
+  AlarmsHelper.addAlarm(newTime.getHours() + ':' +
+                        (minutes < 10 ? '0' + minutes : minutes),
+                        utils.navigation.back);
+  utils.status.show('The alarm has been snoozed for 5 minutes.', 3000);
 });
 
 var stopWatchStart = document.getElementById('stopwatch-start');

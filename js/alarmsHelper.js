@@ -2,11 +2,19 @@
 
 var AlarmsHelper = (function() {
 
-	function ring() {
+  var ringTime = document.getElementById('ring-time');
+
+  function ring(date) {
     updateAlarmList();
-		navigator.vibrate(2000);
-		alert('RING!!!');
-	}
+    navigator.vibrate(2000);
+    var hours, minutes;
+    date = date || new Date(Date.now());
+    hours = date.getHours();
+    minutes = date.getMinutes();
+    ringTime.textContent = (hours < 10 ? '0' + hours : hours) + ':' +
+      (minutes < 10 ? '0' + minutes : minutes);
+    utils.navigation.go('#ring');
+  }
 
 	if (navigator.mozAlarms) {
 	  navigator.mozHasPendingMessage('alarm');
@@ -14,7 +22,7 @@ var AlarmsHelper = (function() {
 		  var req = navigator.mozApps.getSelf();
 			req.onsuccess = function() {
 				req.result.launch();
-				setTimeout(ring);
+				setTimeout(ring.bind(this, mozAlarm.date));
 			};
 		});
 	} else {
