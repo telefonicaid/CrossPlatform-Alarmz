@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=no" />
@@ -35,7 +34,6 @@
     <link rel="stylesheet" href="css/cross_browser.css">
     <link rel="stylesheet" href="css/app.css">
   </head>
-
   <body>
     <section id="tabs" data-position="current">
       <section role="region">
@@ -48,18 +46,23 @@
                   <div id="alarm-new"></div>
                   <canvas id="ca"></canvas>
                 </div>
+                <div id="actions-container">
+                  <button id="show-alarms" class="recommend" disabled>Show alarms</button>
+                </div>
               </div>
             </li>
             <li id="panel2" role="tab">
               <a href="#panel2">Timer</a>
               <div role="tabpanel">
-                <p> To do </p>
+                <p>To do</p>
               </div>
             </li>
             <li id="panel3" role="tab">
               <a href="#panel3">Stopwatch</a>
               <div role="tabpanel">
-                <p id="stopwatch-time"><span id="stopwatch-min">00</span>:<span id="stopwatch-sec">00</span></p>
+                <p id="stopwatch-time">
+                  <span id="stopwatch-min">00</span>:<span id="stopwatch-sec">00</span>
+                </p>
                 <menu>
                   <button id="stopwatch-start">Start</button>
                   <button id="stopwatch-reset" class="danger" disabled>Reset</button>
@@ -97,7 +100,7 @@
           <ul>
             <li class="time-selector">
               <button class="icon icon-dialog"></button>
-              <input id="time" type="time"/>
+              <input id="time" type="time" />
             </li>
           </ul>
         </form>
@@ -169,6 +172,34 @@
         </form>
       </article>
     </section>
+    <section id="alarm-list" role="region" data-position="right" data-transition="push">
+      <header class="fixed">
+        <button id="alarm-list-back">
+          <span class="icon icon-close">close</span>
+        </button>
+        <menu type="toolbar">
+          <button id="alarm-list-done">done</button>
+        </menu>
+        <h1>My alarms</h1>
+      </header>
+      <article class="content scrollable header">
+        <section data-type="list">
+          <ul>
+<!--
+            <li>
+              <p>
+                <label class="pack-checkbox">
+                  <input type="checkbox" checked>
+                  <span></span>
+                </label>
+                Alarm 1
+              </p>
+            </li>
+-->
+          </ul>
+        </section>
+      </article>
+    </section>
     <script type="text/javascript" src="js/status.js"></script>
     <script type="text/javascript" src="js/seekbars.js"></script>
     <script type="text/javascript" src="js/navigation.js"></script>
@@ -177,5 +208,4 @@
     <script type="text/javascript" src="js/alarmsHelper.js"></script>
     <script type="text/javascript" src="js/app.js"></script>
   </body>
-
 </html>
