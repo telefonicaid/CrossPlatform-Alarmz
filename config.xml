@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:tizen="http://tizen.org/ns/widgets" id="https://github.com/telefonicaid/CrossPlatform-Alarmz" version="1.0.0" viewmodes="maximized">
-    <tizen:application id="OT2aUY7jmd.AnalogWatch" package="OT2aUY7jmd" required_version="2.2"/>
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:tizen="http://tizen.org/ns/widgets" id="http://www.tid.es/AlarmClock" version="1.0.0" viewmodes="maximized">
+    <tizen:application id="Kq5ksQJXZI.AlarmClock" package="Kq5ksQJXZI" required_version="2.2"/>
     <content src="index.html"/>
     <icon src="images/tizen-icon-128.png"/>
-    <name>CrossPlatform-Alarmz</name>
+    <name>AlarmClock</name>
 
     <tizen:privilege name="http://tizen.org/privilege/alarm"/>
     <tizen:privilege name="http://tizen.org/privilege/unlimitedstorage"/>
@@ -11,5 +11,5 @@
     <feature name="http://tizen.org/api/alarm" required="true"/>
     <feature name="http://tizen.org/api/alarm.read" required="true"/>
     <feature name="http://tizen.org/api/alarm.write" required="true"/>
-    <feature name="http://tizen.org/api/application.read" required="true"/>    
+    <feature name="http://tizen.org/api/application.read" required="true"/>
 </widget>
