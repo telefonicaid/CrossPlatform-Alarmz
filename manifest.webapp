@@ -1,5 +1,5 @@
 {
-  "name": "Alarmz",
+  "name": "AlarmClock",
   "description": "Cross-platform clock alarms test app.",
   "launch_path": "/index.html",
   "developer": {
@@ -15,8 +15,8 @@
   },
   "locales": {
     "en-US": {
-      "name": "Alarmz",
-      "description": "Cross-platform clock alarms test app."
+      "name": "AlarmClock",
+      "description": "Cross-platform alarm clock test app."
     }
   },
   "default_locale": "en-US",
