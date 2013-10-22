@@ -9,6 +9,12 @@ window.addEventListener('hashchange', function (ev) {
 });
 
 document.getElementById('alarm-new').addEventListener('click', function (ev) {
+  // Set up the time entryfield to current time + 2 minutes
+  var date = new Date();
+  var hours = date.getHours();
+  var minutes = (date.getMinutes() + 2) % 60;
+  document.getElementById('time').value = (hours < 10 ? '0' + hours : hours) + ':' +
+                                          (minutes < 10 ? '0' + minutes : minutes);
   utils.navigation.go('#alarm-new-details');
 });
 
