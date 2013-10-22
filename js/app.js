@@ -33,7 +33,11 @@ document.getElementById('alarm-new-details-done').addEventListener('click', func
   }
 
   document.getElementById('show-alarms').removeAttribute('disabled');
-  AlarmsHelper.addAlarm(time, utils.navigation.back);
+
+  AlarmsHelper.addAlarm(time, utils.navigation.back, {
+    name: document.getElementById('name').value
+  });
+
   utils.status.show(utils.alarms.getAlarmMessage(time));
 });
 
@@ -58,13 +62,19 @@ function addAlarmItem(alarm) {
   var alarmStr;
   if (alarm) {
     var alarmDate = new Date(alarm.date);
-    alarmStr = (alarm.data ? alarm.data + ': ' : '') +
+    alarmStr =
       alarmDate.getDate() + '/' + (alarmDate.getMonth() + 1) + '/' +
       alarmDate.getFullYear() + ' ' +
       (alarmDate.getHours() < 10 ? '0' + alarmDate.getHours() :
         alarmDate.getHours()) + ':' +
       (alarmDate.getMinutes() < 10 ? '0' + alarmDate.getMinutes() :
        alarmDate.getMinutes());
+
+    if (alarm.data) {
+      if (alarm.data.name) {
+        alarmStr += ' (' + alarm.data.name + ')';
+      }
+    }
   } else {
     alarmLabel.classList.add('hidden');
     alarmStr = 'NO ALARMS';

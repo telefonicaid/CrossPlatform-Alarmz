@@ -2,17 +2,18 @@
 
 var AlarmsHelper = (function() {
 
+	var ringText = document.getElementById('ring-text');
   var ringTime = document.getElementById('ring-time');
 
-  function ring(date) {
+  function ring(alarm) {
     updateAlarmList();
     navigator.vibrate(2000);
     var hours, minutes;
-    date = date || new Date(Date.now());
-    hours = date.getHours();
-    minutes = date.getMinutes();
+    hours = alarm.date.getHours();
+    minutes = alarm.date.getMinutes();
     ringTime.textContent = (hours < 10 ? '0' + hours : hours) + ':' +
       (minutes < 10 ? '0' + minutes : minutes);
+		ringText.textContent = alarm.data ? alarm.data.name : '';
     utils.navigation.go('#ring');
   }
 
@@ -22,7 +23,7 @@ var AlarmsHelper = (function() {
 		  var req = navigator.mozApps.getSelf();
 			req.onsuccess = function() {
 				req.result.launch();
-				setTimeout(ring.bind(this, mozAlarm.date));
+				setTimeout(ring.bind(this, mozAlarm));
 			};
 		});
 	} else {
@@ -34,11 +35,15 @@ var AlarmsHelper = (function() {
 			if (appCtrl.operation === 'http://tizen.org/appcontrol/operation/alarm') {
 				appCtrl.data.forEach(function iter(item) {
 					if (item.key === 'http://tizen.org/appcontrol/data/alarm_id') {
-						console.log('Alarm id: ' + item.value[0]);
+						var id = item.value[0];
+						var req = WebAlarmAPI.get(id);
+
+						req.onsuccess = function() {
+							ring(this.result);
+							navigator.alarms.remove(id);
+						};
 					}
 				});
-
-        setTimeout(ring);
 			}
 		}
 	}
@@ -62,11 +67,11 @@ var AlarmsHelper = (function() {
 	  };
 	};
 
-  function addAlarm(time, callback) {
+  function addAlarm(time, callback, data) {
 		time = parseTime(time);
 		var date = new Date();
 		date.setHours(time.hour, time.minute, 0, 0);
-		var request = navigator.alarms.add(date, 'ignoreTimezone');
+		var request = navigator.alarms.add(date, 'ignoreTimezone', data);
 
 		request.onsuccess = function () {
 			console.log("The alarm has been scheduled");
