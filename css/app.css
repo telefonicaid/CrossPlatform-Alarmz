@@ -194,12 +194,11 @@ nav[data-type="scrollbar"] p {
   background-size: 3rem auto;
 }
 
-/*
- Status
+/* Status */
 section[role="status"] {
-  z-index: 1000;
+  position: fixed;
 }
-*/
+
 
 /* Tabs */
  #tabs .content {
