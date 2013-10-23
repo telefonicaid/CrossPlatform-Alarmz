@@ -3,10 +3,17 @@
 utils.navigation.init('[data-position="current"]', 100);
 
 window.addEventListener('hashchange', function (ev) {
+  updateDate();
   if (location.hash !== 'panel1') {
     document.getElementById('panel1').removeAttribute('aria-selected');
   }
 });
+
+function updateDate() {
+  document.getElementById('date-text').textContent = (new Date()).toDateString();
+}
+
+updateDate();
 
 document.getElementById('alarm-new').addEventListener('click', function (ev) {
   document.getElementById('name').value = '';

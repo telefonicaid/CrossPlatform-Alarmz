@@ -225,11 +225,24 @@ section[role="status"] {
 
 /* Clock */
 #clock-container {
-  margin-top: 3rem;
+  margin-top: 7rem;
   margin-left: calc((100% - 25rem) / 2);
   margin-left: -webkit-calc((100% - 25rem) / 2);
   width: 25rem;
   height: 25rem;
+}
+
+#date-text {
+  position: absolute;
+  height: 2.5rem;
+  width: calc(100% - 7.7rem);
+  width: -webkit-calc(100% - 7.7rem);
+  border: none;
+  top: 0;
+  left: 1.5rem;
+  margin-top: 2.3rem;
+  overflow: hidden;
+  color: #00acce;
 }
 
 #alarm-new {
@@ -247,11 +260,11 @@ section[role="status"] {
 
 #actions-container {
   width: 100%;
-  height: 12rem;
+  height: 9rem;
 }
 
 #show-alarms {
-  top: 4.1rem;
+  top: 3rem;
   margin: 0 3rem 0 3rem;
   width: calc(100% - 6rem);
   width: -webkit-calc(100% - 6rem);
@@ -356,5 +369,9 @@ section[role="status"] {
 
   form[role="dialog"][data-type="confirm"] h1 {
     font-size: 3rem;
+  }
+
+  #date-text {
+    font-size: 2.6rem;
   }
 }
