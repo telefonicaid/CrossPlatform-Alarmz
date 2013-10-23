@@ -353,4 +353,8 @@ section[role="status"] {
     font-size: 2rem;
     line-height: 4rem;
   }
+
+  form[role="dialog"][data-type="confirm"] h1 {
+    font-size: 3rem;
+  }
 }
