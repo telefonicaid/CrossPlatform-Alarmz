@@ -337,3 +337,7 @@ section[role="status"] {
   width: 12.4rem;
   height: 5.5rem;
 }
+
+#alarm-list ul > li > * {
+  pointer-events: none;
+}

@@ -41,63 +41,19 @@ document.getElementById('alarm-new-details-done').addEventListener('click', func
   utils.status.show(utils.alarms.getAlarmMessage(time));
 });
 
-function resetAlarmList() {
-  var alarmList = document.querySelector('#alarm-list ul');
-  alarmList.innerHTML = '';
-}
-
-function addAlarmItem(alarm) {
-  var alarmList = document.querySelector('#alarm-list ul');
-  var alarmLI = document.createElement('li');
-  var alarmP = document.createElement('p');
-  var alarmLabel = document.createElement('label');
-  alarmLabel.classList.add('pack-checkbox');
-  var alarmInput = document.createElement('input');
-  alarmInput.setAttribute('type', 'checkbox');
-  alarmInput.setAttribute('checked', true);
-  var alarmSpan = document.createElement('span');
-  alarmLabel.appendChild(alarmInput);
-  alarmLabel.appendChild(alarmSpan);
-  alarmP.appendChild(alarmLabel);
-  var alarmStr;
-  if (alarm) {
-    var alarmDate = new Date(alarm.date);
-    alarmStr =
-      alarmDate.getDate() + '/' + (alarmDate.getMonth() + 1) + '/' +
-      alarmDate.getFullYear() + ' ' +
-      (alarmDate.getHours() < 10 ? '0' + alarmDate.getHours() :
-        alarmDate.getHours()) + ':' +
-      (alarmDate.getMinutes() < 10 ? '0' + alarmDate.getMinutes() :
-       alarmDate.getMinutes());
-
-    if (alarm.data) {
-      if (alarm.data.name) {
-        alarmStr += ' (' + alarm.data.name + ')';
-      }
-    }
-  } else {
-    alarmLabel.classList.add('hidden');
-    alarmStr = 'NO ALARMS';
-  }
-  var alarmText = document.createTextNode(alarmStr);
-  alarmP.appendChild(alarmText);
-  alarmLI.appendChild(alarmP);
-  alarmList.appendChild(alarmLI);
-}
-
 function updateAlarmList() {
   var alarmsRequest = navigator.alarms.getAll();
   alarmsRequest.onsuccess = function (ev) {
-    resetAlarmList();
+    AlarmsList.reset();
     if (this.result.length) {
       document.getElementById('show-alarms').removeAttribute('disabled');
       var i, alarms = this.result;
       for (i = 0; i < alarms.length; i++) {
-        addAlarmItem(alarms[i]);
+        AlarmsList.add(alarms[i]);
       }
     } else {
       document.getElementById('show-alarms').setAttribute('disabled', true);
-      addAlarmItem();
+      AlarmsList.add();
     }
   };
   alarmsRequest.onerror = function (error) {
@@ -116,7 +72,18 @@ document.getElementById('alarm-list-back').addEventListener('click', function (e
   utils.navigation.back();
 });
 
-document.getElementById('alarm-list-done').addEventListener('click', function (ev) {
+document.getElementById('alarm-list-remove').addEventListener('click', function (ev) {
+  ev.preventDefault();
+
+  var checkboxes = document.querySelectorAll('#alarm-list ul input[type="checkbox"]:checked');
+
+  for(var i = 0; i < checkboxes.length; i++) {
+    navigator.alarms.remove(checkboxes[i].dataset.id);
+  }
+
+  utils.status.show('Alarms removed successfully.', 3000);
+
+  updateAlarmList();
   utils.navigation.back();
 });
 
