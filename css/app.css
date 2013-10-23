@@ -341,3 +341,16 @@ section[role="status"] {
 #alarm-list ul > li > * {
   pointer-events: none;
 }
+
+@media (min-width: 360px) {
+  [role="tablist"] > [role="tab"] > a {
+    font-size: 2rem;
+    line-height: 4.7rem;
+  }
+
+  button, a[role="button"], .button {
+    height: 4rem;
+    font-size: 2rem;
+    line-height: 4rem;
+  }
+}
