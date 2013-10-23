@@ -123,7 +123,7 @@ form[role="dialog"][data-type="confirm"].fadeIn {
 }
 
 /* Fix margins (overwrite util.css) */
-section[role="region"] > .content {
+section[role="region"] > .content:not(.scrollable) {
   padding: 0 1.5rem 1.5rem 1.5rem;
 }
 
@@ -324,11 +324,11 @@ section[role="status"] {
   box-pack: center;
 }
 
-#panel3 menu {
+#panel2 menu {
   margin-right: 5rem;
 }
 
-#panel3 button {
+#panel2 button {
   width: 100%;
   text-align: center;
 }
@@ -336,4 +336,25 @@ section[role="status"] {
 #ring img {
   width: 12.4rem;
   height: 5.5rem;
+}
+
+#alarm-list ul > li > * {
+  pointer-events: none;
+}
+
+@media (min-width: 360px) {
+  [role="tablist"] > [role="tab"] > a {
+    font-size: 2rem;
+    line-height: 4.7rem;
+  }
+
+  button, a[role="button"], .button {
+    height: 4rem;
+    font-size: 2rem;
+    line-height: 4rem;
+  }
+
+  form[role="dialog"][data-type="confirm"] h1 {
+    font-size: 3rem;
+  }
 }

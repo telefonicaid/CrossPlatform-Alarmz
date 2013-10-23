@@ -5,26 +5,17 @@
     <meta name="viewport" content="width=device-width, user-scalable=no" />
     <title>Building blocks demo</title>
     <!-- Building blocks -->
-    <link rel="stylesheet" href="css/style/action_menu.css">
     <link rel="stylesheet" href="css/style/buttons.css">
     <link rel="stylesheet" href="css/style/confirm.css">
-    <link rel="stylesheet" href="css/style/edit_mode.css">
     <link rel="stylesheet" href="css/style/headers.css">
     <link rel="stylesheet" href="css/style/input_areas.css">
     <link rel="stylesheet" href="css/style/status.css">
     <link rel="stylesheet" href="css/style/switches.css">
     <link rel="stylesheet" href="css/style_unstable/drawer.css">
     <link rel="stylesheet" href="css/style_unstable/lists.css">
-    <link rel="stylesheet" href="css/style_unstable/progress_activity.css">
-    <link rel="stylesheet" href="css/style_unstable/scrolling.css">
-    <link rel="stylesheet" href="css/style_unstable/seekbars.css">
     <link rel="stylesheet" href="css/style_unstable/tabs.css">
     <link rel="stylesheet" href="css/style_unstable/toolbars.css">
-    <!-- Icons -->
-    <link rel="stylesheet" href="css/icons/styles/action_icons.css">
-    <link rel="stylesheet" href="css/icons/styles/media_icons.css">
-    <link rel="stylesheet" href="css/icons/styles/comms_icons.css">
-    <link rel="stylesheet" href="css/icons/styles/settings_icons.css">
+
     <!-- Transitions -->
     <link rel="stylesheet" href="css/transitions.css">
     <!-- Util CSS: some extra tricks -->
@@ -38,7 +29,7 @@
     <section id="tabs" data-position="current">
       <section role="region">
         <article class="content scrollable">
-          <ul role="tablist" data-items="3" class="bottom">
+          <ul role="tablist" data-items="2" class="bottom">
             <li id="panel1" role="tab" aria-selected="true">
               <a href="#panel1">Alarm</a>
               <div role="tabpanel">
@@ -52,13 +43,7 @@
               </div>
             </li>
             <li id="panel2" role="tab">
-              <a href="#panel2">Timer</a>
-              <div role="tabpanel">
-                <p>To do</p>
-              </div>
-            </li>
-            <li id="panel3" role="tab">
-              <a href="#panel3">Stopwatch</a>
+              <a href="#panel2">Stopwatch</a>
               <div role="tabpanel">
                 <p id="stopwatch-time">
                   <span id="stopwatch-min">00</span>:<span id="stopwatch-sec">00</span>
@@ -89,7 +74,7 @@
         </header>
         <form>
           <p>
-            <input type="text" placeholder="Type a name...">
+            <input id="name" type="text" placeholder="Type a name...">
             <button type="reset">Clear</button>
           </p>
         </form>
@@ -178,7 +163,7 @@
           <span class="icon icon-close">close</span>
         </button>
         <menu type="toolbar">
-          <button id="alarm-list-done">done</button>
+          <button id="alarm-list-remove">Remove</button>
         </menu>
         <h1>My alarms</h1>
       </header>
@@ -215,12 +200,12 @@
       </menu>
     </form>
     <script type="text/javascript" src="js/status.js"></script>
-    <script type="text/javascript" src="js/seekbars.js"></script>
     <script type="text/javascript" src="js/navigation.js"></script>
     <script type="text/javascript" src="js/clock.js"></script>
     <script type="text/javascript" src="js/utils.js"></script>
     <script type="text/javascript" src="js/alarms.js"></script>
     <script type="text/javascript" src="js/alarmsHelper.js"></script>
+    <script type="text/javascript" src="js/alarmsList.js"></script>
     <script type="text/javascript" src="js/app.js"></script>
   </body>
 </html>
