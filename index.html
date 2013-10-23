@@ -96,10 +96,13 @@
           <ul>
             <li class="value-selector">
               <button class="icon icon-dialog"></button>
-              <select>
-                <option>Song 1</option>
-                <option>Song 2</option>
-                <option>Song 3</option>
+              <select id='tone'>
+                <option selected>None</option>
+                <option value="fart-01.mp3">Fart</option>
+                <option value="machine-gun-01.mp3">Gun fire</option>
+                <option value="button-2.mp3">Laser 1</option>
+                <option value="button-8.mp3">Laser 2</option>
+                <option value="train-whistle-01.mp3">Train</option>
               </select>
             </li>
           </ul>
@@ -162,6 +165,13 @@
         <button id="ring-snooze"class="recommend">Snooze</button>
       </menu>
     </form>
+    <section>
+      <audio src="media/button-2.mp3" preload="auto"></audio>
+      <audio src="media/button-8.mp3" preload="auto"></audio>
+      <audio src="media/fart-01.mp3" preload="auto"></audio>
+      <audio src="media/machine-gun-01.mp3" preload="auto"></audio>
+      <audio src="media/train-whistle-01.mp3" preload="auto"></audio>
+    </section>
     <script type="text/javascript" src="js/status.js"></script>
     <script type="text/javascript" src="js/navigation.js"></script>
     <script type="text/javascript" src="js/clock.js"></script>

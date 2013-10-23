@@ -58,6 +58,9 @@ var AlarmsList = (function() {
         if (alarm.data.name) {
           alarmStr += ' (' + alarm.data.name + ')';
         }
+        if (alarm.data.tone && alarm.data.tone !== 'None') {
+          alarmStr = '\u266A' + alarmStr;
+        }
       }
     } else {
       alarmLabel.classList.add('hidden');
