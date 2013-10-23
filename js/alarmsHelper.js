@@ -5,7 +5,10 @@ var AlarmsHelper = (function() {
 	var ringText = document.getElementById('ring-text');
   var ringTime = document.getElementById('ring-time');
 
+	var currentAlarm;
+
   function ring(alarm) {
+		currentAlarm = alarm;
     updateAlarmList();
     if (alarm.data && alarm.data.vibrate)
       navigator.vibrate(2000);
@@ -86,6 +89,10 @@ var AlarmsHelper = (function() {
 	}
 
   return {
-    addAlarm: addAlarm
+    addAlarm: addAlarm,
+
+		get currentAlarm() {
+			return currentAlarm;
+		}
   };
 }());
