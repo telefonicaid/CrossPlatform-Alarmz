@@ -26,6 +26,16 @@ document.getElementById('alarm-new').addEventListener('click', function (ev) {
   utils.navigation.go('#alarm-new-details');
 });
 
+document.getElementById('tone').addEventListener('change', function (ev) {
+  document.getElementById('tone-button').textContent =
+    ev.target.options[ev.target.selectedIndex].text;
+});
+
+document.getElementById('vibration').addEventListener('change', function (ev) {
+  document.getElementById('vibration-button').textContent =
+    ev.target.options[ev.target.selectedIndex].text;
+});
+
 document.getElementById('alarm-new-details-back').addEventListener('click', function (ev) {
   ev.preventDefault();
   utils.navigation.back();

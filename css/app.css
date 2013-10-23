@@ -258,6 +258,10 @@ section[role="status"] {
   margin-right: 1.5rem;
 }
 
+#tone-button, #vibration-button {
+  font-weight: 400;
+}
+
 #actions-container {
   width: 100%;
   height: 9rem;
