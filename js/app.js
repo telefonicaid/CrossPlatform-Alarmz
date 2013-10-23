@@ -100,8 +100,9 @@ document.getElementById('ring-snooze').addEventListener('click', function (ev) {
   var minutes = newTime.getMinutes();
   AlarmsHelper.addAlarm(newTime.getHours() + ':' +
                         (minutes < 10 ? '0' + minutes : minutes),
-                        utils.navigation.back);
+                        utils.navigation.back, AlarmsHelper.currentAlarm.data);
   utils.status.show('The alarm has been snoozed for 5 minutes.', 3000);
+  updateAlarmList();
 });
 
 var stopWatchStart = document.getElementById('stopwatch-start');
