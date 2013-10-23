@@ -123,7 +123,7 @@ form[role="dialog"][data-type="confirm"].fadeIn {
 }
 
 /* Fix margins (overwrite util.css) */
-section[role="region"] > .content {
+section[role="region"] > .content:not(.scrollable) {
   padding: 0 1.5rem 1.5rem 1.5rem;
 }
 
