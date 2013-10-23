@@ -9,6 +9,7 @@ window.addEventListener('hashchange', function (ev) {
 });
 
 document.getElementById('alarm-new').addEventListener('click', function (ev) {
+  document.getElementById('name').value = '';
   // Set up the time entryfield to current time + 2 minutes
   var date = new Date((new Date()).getTime() + 2 * 60000);
   var hours = date.getHours();
