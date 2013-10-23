@@ -324,11 +324,11 @@ section[role="status"] {
   box-pack: center;
 }
 
-#panel3 menu {
+#panel2 menu {
   margin-right: 5rem;
 }
 
-#panel3 button {
+#panel2 button {
   width: 100%;
   text-align: center;
 }
