@@ -7,7 +7,8 @@ var AlarmsHelper = (function() {
 
   function ring(alarm) {
     updateAlarmList();
-    navigator.vibrate(2000);
+    if (alarm.data && alarm.data.vibrate)
+      navigator.vibrate(2000);
     var hours, minutes;
     hours = alarm.date.getHours();
     minutes = alarm.date.getMinutes();
