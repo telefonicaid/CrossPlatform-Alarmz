@@ -2,16 +2,26 @@
 
 var AlarmsHelper = (function() {
 
-	var ringText = document.getElementById('ring-text');
+  var ringText = document.getElementById('ring-text');
   var ringTime = document.getElementById('ring-time');
+  var audio = new Audio();;
 
 	var currentAlarm;
 
   function ring(alarm) {
 		currentAlarm = alarm;
     updateAlarmList();
-    if (alarm.data && alarm.data.vibrate)
+    if (alarm.data && alarm.data.vibrate) {
       navigator.vibrate(2000);
+    }
+    if (alarm.data && alarm.data.tone && alarm.data.tone !== 'None') {
+      audio.src = 'media/' + alarm.data.tone;
+      audio.play();
+      setTimeout(function() {
+        audio.pause();
+        audio.currentTime = 0;
+      }, 2000);
+    }
     var hours, minutes;
     hours = alarm.date.getHours();
     minutes = alarm.date.getMinutes();

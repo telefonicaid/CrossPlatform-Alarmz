@@ -34,9 +34,11 @@ document.getElementById('alarm-new-details-done').addEventListener('click', func
 
   document.getElementById('show-alarms').removeAttribute('disabled');
 
+  var selectEl = document.getElementById('tone');
   AlarmsHelper.addAlarm(time, utils.navigation.back, {
     name: document.getElementById('name').value,
-    vibrate: document.getElementById('vibration').value === 'false' ? false : true
+    vibrate: document.getElementById('vibration').value === 'false' ? false : true,
+    tone: selectEl.options[selectEl.selectedIndex].value
   });
 
   utils.status.show(utils.alarms.getAlarmMessage(time));
