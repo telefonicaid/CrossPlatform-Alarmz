@@ -94,11 +94,13 @@ document.getElementById('alarm-list-remove').addEventListener('click', function 
 
 document.getElementById('ring-close').addEventListener('click', function (ev) {
   ev.preventDefault();
+  AlarmsHelper.stopRinging();
   utils.navigation.back();
 });
 
 document.getElementById('ring-snooze').addEventListener('click', function (ev) {
   ev.preventDefault();
+  AlarmsHelper.stopRinging();
   var now = new Date(Date.now());
   var newTime = new Date(now.getTime() + 5*60000);
   var minutes = newTime.getMinutes();
