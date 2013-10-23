@@ -4,23 +4,24 @@ var AlarmsHelper = (function() {
 
   var ringText = document.getElementById('ring-text');
   var ringTime = document.getElementById('ring-time');
-  var audio = new Audio();;
+  var audio = new Audio();
+  var vibrationInterval;
 
 	var currentAlarm;
 
   function ring(alarm) {
-		currentAlarm = alarm;
+    stopRinging();
+    currentAlarm = alarm;
     updateAlarmList();
     if (alarm.data && alarm.data.vibrate) {
-      navigator.vibrate(2000);
+      vibrationInterval = setInterval(function() {
+        navigator.vibrate([250, 250]);
+      }, 500);
     }
     if (alarm.data && alarm.data.tone && alarm.data.tone !== 'None') {
       audio.src = 'media/' + alarm.data.tone;
+      audio.loop = true;
       audio.play();
-      setTimeout(function() {
-        audio.pause();
-        audio.currentTime = 0;
-      }, 2000);
     }
     var hours, minutes;
     hours = alarm.date.getHours();
@@ -98,8 +99,17 @@ var AlarmsHelper = (function() {
 		};
 	}
 
+  function stopRinging() {
+    clearInterval(vibrationInterval);
+    if (!audio.paused) {
+      audio.pause();
+      audio.currentTime = 0;
+    }
+  }
+
   return {
     addAlarm: addAlarm,
+    stopRinging: stopRinging,
 
 		get currentAlarm() {
 			return currentAlarm;
