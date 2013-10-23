@@ -75,8 +75,21 @@ var AlarmsList = (function() {
     list.innerHTML = '';
   }
 
+  function sort(alarms) {
+    return alarms.sort(function compare(first, second) {
+      if (first.date > second.date) {
+        return 1;
+      } else if (first.date > second.date) {
+        return -1;
+      } else {
+        0
+      }
+    });
+  }
+
   return {
     reset: reset,
-    add: add
+    add: add,
+    sort: sort
   };
 }());

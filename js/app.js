@@ -49,6 +49,7 @@ function updateAlarmList() {
     if (this.result.length) {
       document.getElementById('show-alarms').removeAttribute('disabled');
       var i, alarms = this.result;
+      alarms = AlarmsList.sort(alarms);
       for (i = 0; i < alarms.length; i++) {
         AlarmsList.add(alarms[i]);
       }
