@@ -1,0 +1,21 @@
+{
+  "name": "AlarmClock",
+  "description": "Cross-platform clock alarms test app.",
+  "package_path": "http://telefonicaid.github.io/CrossPlatform-AlarmClock/install/package.zip",
+  "version": "1",
+  "size": 2534630,
+  "developer": {
+    "name": "Telefónica Digital",
+    "url": "https://github.com/telefonicaid"
+  },
+  "icons": {
+    "60": "/images/tizen-icon-60.png",
+    "128": "/images/tizen-icon-128.png"
+  },
+  "locales": {
+    "en-US": {
+      "name": "AlarmClock",
+      "description": "Cross-platform alarm clock test app."
+    }
+  }
+}
